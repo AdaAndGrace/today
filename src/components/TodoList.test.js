@@ -25,7 +25,3 @@ it('renders without crashing', () => {
     expect(wrapper).toMatchSnapshot();
 });
 
-it('renders an item for each item in items list', () => {
-    const wrapper = renderer.create(<TodoList items={list}/>).toJSON();
-    expect(wrapper.find(ListItem)).to.have.length(1);
-});

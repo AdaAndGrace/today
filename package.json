@@ -3,17 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-preset-react-native": "^4.0.0",
-    "chai": "^4.1.2",
-    "enzyme": "^3.3.0",
-    "enzyme-to-json": "^3.3.1",
     "identity-obj-proxy": "^3.0.0",
     "jest-expo": "25.0.0",
-    "mocha": "^5.0.1",
-    "react-addons-test-utils": "^15.6.2",
-    "react-dom": "^16.2.0",
-    "react-native-mock": "^0.3.1",
     "react-native-scripts": "1.11.1",
     "react-test-renderer": "16.2.0"
   },
@@ -29,10 +20,7 @@
     "preset": "jest-expo",
     "moduleNameMapper": {
       ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
-    },
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
+    }
   },
   "dependencies": {
     "expo": "^25.0.0",
