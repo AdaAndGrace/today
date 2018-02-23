@@ -1,69 +1,43 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {Text, List, ListItem, CheckBox, Icon} from 'react-native-elements';
+import {Text, Icon} from 'react-native-elements';
+import TodoList from './src/components/TodoList';
 
 export default class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            list: [
-                {
-                    title: 'Take out the trash',
-                    done: true
-                },
-                {
-                    title: 'Buy Coffee',
-                    done: false
-                },
-                {
-                    title: 'Call Amy',
-                    done: false
-                }
-            ]
-        }
-    }
+    state = {
+        list: [
+            {
+                title: 'Take out the trash',
+                done: true
+            },
+            {
+                title: 'Buy Coffee',
+                done: false
+            },
+            {
+                title: 'Call Amy',
+                done: false
+            }
+        ]
+    };
 
-    handleAddItem(item) {
+    handleAddItem = (item) => {
         console.log(item)
-    }
+    };
 
-    handleCheckItem(index) {
+    handleCheckItem = (index) => {
         let list = this.state.list;
         list[index].done = !this.state.list[index].done;
         this.setState({
             list: list
         });
-    }
+    };
 
     render() {
         return (
             <View style={styles.container}>
                 <Text h2>Today!</Text>
-                <List containerStyle={{'width': 350}}>
-                    {
-                        this.state.list.map((item, index) => (
-                            <ListItem
-                                key={index}
-                                containerStyle={styles.listItem}
-                                hideChevron
-                                title={
-                                    <View>
-                                        <CheckBox
-                                            containerStyle={styles.listCheckbox}
-                                            title={item.title}
-                                            uncheckedIcon='circle-thin'
-                                            checkedIcon='check-circle'
-                                            checked={item.done}
-                                            size={30}
-                                            textStyle={item.done ? styles.doneItemText : styles.itemText}
-                                            onPress={() => this.handleCheckItem(index)}
-                                        />
-                                    </View>
-                                }
-                            />
-                        ))
-                    }
-                </List>
+                <TodoList items={this.state.list} onCheckItem={this.handleCheckItem}/>
                 <Icon
                     name='add-circle'
                     color='#f50'
