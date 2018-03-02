@@ -6,7 +6,7 @@ export default class TodoList extends React.Component {
 
     handleCheckItem = (index) => {
         this.props.onCheckItem(index);
-    }
+    };
 
     render() {
         return (
