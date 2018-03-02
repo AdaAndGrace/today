@@ -77,10 +77,6 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         marginTop: 40,
     },
-    headline: {
-        fontSize:62,
-        color:'red'
-    },
     list: {
         width: 200
     },
