@@ -1,0 +1,24 @@
+{
+  "name": "today",
+  "css_prefix_text": "icon-",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "fcfd6dc1822200f6cf9f6ac886a5e60a",
+      "css": "task",
+      "code": 59392,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M820.3 1000H179.7A179.8 179.8 0 0 1 0 820.3V179.7A179.8 179.8 0 0 1 179.7 0H820.3A179.8 179.8 0 0 1 1000 179.7V820.3A179.8 179.8 0 0 1 820.3 1000ZM179.7 109.4A70.3 70.3 0 0 0 109.4 179.7V820.3A70.3 70.3 0 0 0 179.7 890.6H820.3A70.3 70.3 0 0 0 890.6 820.3V179.7A70.3 70.3 0 0 0 820.3 109.4H179.7Z",
+        "width": 1000
+      },
+      "search": [
+        "task"
+      ]
+    }
+  ]
+}
