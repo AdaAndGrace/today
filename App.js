@@ -1,9 +1,13 @@
 import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import {Icon} from 'react-native-elements';
+import { createIconSetFromFontello } from '@expo/vector-icons';
+import fontelloConfig from './config.json';
+const Icon2 = createIconSetFromFontello(fontelloConfig, 'today');
 import TodoList from './src/components/TodoList/TodoList';
 import { Font } from 'expo';
-import TodayText from './src/components/TodayText/TodayText'
+import HelloText from './src/components/HelloText/HelloText';
+import TodayText from './src/components/TodayText/TodayText';
 
 
 export default class App extends React.Component {
@@ -28,6 +32,7 @@ export default class App extends React.Component {
     async componentDidMount() {
         await Font.loadAsync({
             'WaitingForTheSunrise': require('./src/assets/fonts/WaitingForTheSunrise.ttf'),
+            'today': require('./src/assets/fonts/today.ttf'),
         });
 
         this.setState({ fontLoaded: true });
@@ -54,8 +59,7 @@ export default class App extends React.Component {
                 {this.state.fontLoaded ? (
                     <View style={styles.container}>
                         <TodayText h2 style={{fontSize: 56}}>Today!</TodayText>
-
-
+                        <Icon2 name="task" size={22} color="#ccc" />
                         <TodoList items={this.state.list} onCheckItem={this.handleCheckItem}/>
                         <Icon
                             name='add-circle'
