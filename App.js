@@ -1,9 +1,6 @@
 import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import {Icon} from 'react-native-elements';
-import { createIconSetFromFontello } from '@expo/vector-icons';
-import fontelloConfig from './config.json';
-const Icon2 = createIconSetFromFontello(fontelloConfig, 'today');
 import TodoList from './src/components/TodoList/TodoList';
 import { Font } from 'expo';
 import HelloText from './src/components/HelloText/HelloText';
@@ -77,6 +74,7 @@ export default class App extends React.Component {
                 {this.state.fontLoaded ? (
                     <View style={styles.container}>
                         <TodayText h2 style={{fontSize: 56}}>Today!</TodayText>
+                        <HelloText/>
                         <TodoList items={this.state.list} onUpdateStatus={this.handleUpdateStatus}/>
                         <Icon
                             name='add-circle'
