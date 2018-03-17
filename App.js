@@ -17,15 +17,18 @@ export default class App extends React.Component {
         list: [
             {
                 title: 'Take out the trash',
-                done: true
+                done: true,
+                status: 'done'
             },
             {
                 title: 'Buy Coffee',
-                done: false
+                done: false,
+                status: 'todo'
             },
             {
                 title: 'Call Amy',
-                done: false
+                done: false,
+                status: 'todo'
             }
         ]
     };
@@ -43,12 +46,27 @@ export default class App extends React.Component {
         console.log(item)
     };
 
-    handleCheckItem = (index) => {
+    handleUpdateStatus = (index) => {
         let list = this.state.list;
-        list[index].done = !this.state.list[index].done;
+        let newStatus;
+
+        switch(list[index].status) {
+            case 'todo':
+                newStatus = 'doing';
+                break;
+            case 'doing':
+                newStatus = 'done';
+                break;
+            case 'done':
+                newStatus = 'todo';
+                break;
+            default:
+                newStatus = 'todo';
+        }
+        list[index].status = newStatus;
         this.setState({
             list: list
-        });
+        })
     };
 
 
@@ -59,8 +77,7 @@ export default class App extends React.Component {
                 {this.state.fontLoaded ? (
                     <View style={styles.container}>
                         <TodayText h2 style={{fontSize: 56}}>Today!</TodayText>
-                        <Icon2 name="task" size={22} color="#ccc" />
-                        <TodoList items={this.state.list} onCheckItem={this.handleCheckItem}/>
+                        <TodoList items={this.state.list} onUpdateStatus={this.handleUpdateStatus}/>
                         <Icon
                             name='add-circle'
                             color='#f50'
@@ -80,31 +97,5 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'flex-start',
         marginTop: 40,
-    },
-    list: {
-        width: 200
-    },
-    listItem: {
-        paddingTop: 0,
-        paddingRight: 0,
-        paddingBottom: 0,
-        paddingLeft: 0,
-        margin: 0
-    },
-    listCheckbox: {
-        backgroundColor: 'transparent',
-        borderWidth: 0,
-        marginTop: 0,
-        marginRight: 0,
-        marginBottom: 0,
-        marginLeft:0
-    },
-    itemText: {
-        fontSize: 16
-    },
-    doneItemText: {
-        color: '#aaa',
-        fontSize: 16,
-        textDecorationLine: 'line-through'
     }
 });
