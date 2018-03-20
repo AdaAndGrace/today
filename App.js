@@ -3,7 +3,7 @@ import {StyleSheet, View, Text} from 'react-native';
 import {Icon} from 'react-native-elements';
 import TodoList from './src/components/TodoList/TodoList';
 import { Font } from 'expo';
-import TodayText from './src/components/TodayText/TodayText';
+import TodayText from './src/components/TodayText/TodayText'
 
 
 export default class App extends React.Component {
