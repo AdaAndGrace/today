@@ -1,6 +1,9 @@
 import React from 'react';
 import {StyleSheet, View, TouchableOpacity} from 'react-native';
 import TodayText from '../TodayText/TodayText';
+import { createIconSetFromFontello } from '@expo/vector-icons';
+import fontelloConfig from '../../../config.json';
+const Icon = createIconSetFromFontello(fontelloConfig, 'today');
 
 export default class ListItem extends React.Component {
 
@@ -12,10 +15,10 @@ export default class ListItem extends React.Component {
         return(
             <View style={styles.listItem}>
                 <TouchableOpacity onPress={this.handleUpdateStatus}>
-                    <TodayText style={this.props.status === 'done' ? [styles.doneItemText, styles.itemStatus] : styles.itemStatus}>{this.props.status}</TodayText>
+                    <Icon name={this.props.status} size={22} color="#ccc" />
                 </TouchableOpacity>
                 <View>
-                    <TodayText style={this.props.status === 'done' ? [styles.doneItemText, styles.itemTitle] : styles.itemTitle}>{this.props.title}</TodayText>
+                    <TodayText style={(this.props.status === 'task-completed' || this.props.status === 'appointment-completed' || this.props.status === 'event-completed') ? [styles.doneItemText, styles.itemTitle] : styles.itemTitle}>{this.props.title}</TodayText>
                 </View>
             </View>
         )
