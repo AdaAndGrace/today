@@ -13,18 +13,27 @@ export default class App extends React.Component {
         list: [
             {
                 title: 'Take out the trash',
+                tea: 'task',
                 done: false,
-                status: 'task'
+                status: 'completed'
             },
             {
-                title: 'Buy Coffee',
+                title: 'March for Our Lives',
+                tea: 'event',
                 done: false,
-                status: 'task'
+                status: 'todo',
+                category: 'important'
             },
             {
                 title: 'Call Amy',
+                tea: 'task',
                 done: false,
-                status: 'task'
+                status: 'todo',
+                category: 'inspiration'
+            },
+            {
+                title: 'A really big idea that wraps lines',
+                category: 'idea'
             }
         ]
     };
@@ -47,65 +56,20 @@ export default class App extends React.Component {
         let newStatus;
 
         switch(list[index].status) {
-            case 'task':
-                newStatus = 'task-completed';
-                done='true';
+            case 'todo':
+                newStatus = 'doing';
                 break;
-            case 'task-completed':
-                newStatus = 'task-migrated';
+            case 'doing':
+                newStatus = 'completed';
                 break;
-            case 'task-migrated':
-                newStatus = 'task-cancelled';
+            case 'completed':
+                newStatus = 'migrated';
                 break;
-            case 'task-cancelled':
-                newStatus = 'appointment';
-                break;
-            case 'appointment':
-                newStatus = 'appointment-completed';
-                done='true';
-                break;
-            case 'appointment-completed':
-                newStatus = 'appointment-migrated';
-                break;
-            case 'appointment-migrated':
-                newStatus = 'appointment-cancelled';
-                break;
-            case 'appointment-cancelled':
-                newStatus = 'event';
-                break;
-            case 'event':
-                newStatus = 'event-completed';
-                done='true';
-                break;
-            case 'event-completed':
-                newStatus = 'event-migrated';
-                break;
-            case 'event-migrated':
-                newStatus = 'event-cancelled';
-                break;
-            case 'event-cancelled':
-                newStatus = 'deadline';
-                break;
-            case 'deadline':
-                newStatus = 'expenses';
-                break;
-            case 'expenses':
-                newStatus = 'idea';
-                break;
-            case 'idea':
-                newStatus = 'important';
-                break;
-            case 'important':
-                newStatus = 'inspiration';
-                break;
-            case 'inspiration':
-                newStatus = 'notes';
-                break;
-            case 'notes':
-                newStatus = 'question';
+            case 'migrated':
+                newStatus = 'todo';
                 break;
             default:
-                newStatus = 'task';
+                newStatus = 'todo';
         }
         list[index].status = newStatus;
         this.setState({
@@ -125,6 +89,7 @@ export default class App extends React.Component {
                         <Icon
                             name='add-circle'
                             color='#f50'
+                            size={60}
                             onPress={() => this.handleAddItem('TODO: pop a modal to capture new item.  also, style this button plz')}/>
                     </View>
                     ) : null

@@ -50,7 +50,7 @@
     },
     {
       "uid": "b50c56ebaf1f6a831f7fa099f2011fec",
-      "css": "appointment",
+      "css": "appointment-todo",
       "code": 59395,
       "src": "custom_icons",
       "selected": true,
@@ -120,7 +120,7 @@
     },
     {
       "uid": "e7420a4cf1ca5658cf81c8a49e47ab90",
-      "css": "event",
+      "css": "event-todo",
       "code": 59400,
       "src": "custom_icons",
       "selected": true,
@@ -260,7 +260,7 @@
     },
     {
       "uid": "1da2ed9d9b71dd1aee9b83aab40e9439",
-      "css": "task",
+      "css": "task-todo",
       "code": 59410,
       "src": "custom_icons",
       "selected": true,
