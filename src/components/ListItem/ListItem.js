@@ -12,13 +12,17 @@ export default class ListItem extends React.Component {
     };
 
     render() {
+        let teaIcon = this.props.tea ? this.props.tea + '-' +  this.props.status : null;
         return(
             <View style={styles.listItem}>
-                <TouchableOpacity onPress={this.handleUpdateStatus}>
-                    <Icon name={this.props.status} size={22} color="#ccc" />
+                <TouchableOpacity onPress={this.handleUpdateStatus} style={styles.rightMargin}>
+                    <Icon name={teaIcon} style={this.props.status ==='completed' ? [styles.doneItemIcon, styles.itemIcon] : styles.itemIcon}/>
+                </TouchableOpacity>
+                <TouchableOpacity  style={styles.rightMargin}>
+                    <Icon name={this.props.category} style={this.props.status ==='completed' ? [styles.doneItemIcon, styles.itemIcon] : styles.itemIcon}/>
                 </TouchableOpacity>
                 <View>
-                    <TodayText style={(this.props.status === 'task-completed' || this.props.status === 'appointment-completed' || this.props.status === 'event-completed') ? [styles.doneItemText, styles.itemTitle] : styles.itemTitle}>{this.props.title}</TodayText>
+                    <TodayText style={this.props.status ==='completed' ? [styles.doneItemTitle, styles.itemTitle] : styles.itemTitle}>{this.props.title}</TodayText>
                 </View>
             </View>
         )
@@ -26,21 +30,30 @@ export default class ListItem extends React.Component {
 }
 
 
-const fontSize = 24;
+const fontSize = 26;
+const doneColor = '#aaa';
 
 const styles = StyleSheet.create({
     listItem: {
         flexDirection: 'row',
+        alignItems: 'flex-start'
+    },
+    rightMargin: {
+        marginRight:15
+    },
+    itemIcon: {
+        fontSize:fontSize,
+        minWidth: fontSize,
+        marginTop: 15
+    },
+    doneItemIcon: {
+        color: doneColor
     },
     itemTitle: {
         fontSize:fontSize
     },
-    itemStatus: {
-        fontSize:fontSize,
-        paddingRight: 20
-    },
-    doneItemText: {
-        color: '#aaa',
+    doneItemTitle: {
+        color: doneColor,
         textDecorationLine: 'line-through'
     }
 });

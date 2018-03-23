@@ -6,15 +6,27 @@ import renderer from 'react-test-renderer';
 const list = [
     {
         title: 'Take out the trash',
-        done: true
+        tea: 'task',
+        done: false,
+        status: 'completed'
     },
     {
-        title: 'Buy Coffee',
-        done: false
+        title: 'March for Our Lives',
+        tea: 'event',
+        done: false,
+        status: 'todo',
+        category: 'important'
     },
     {
         title: 'Call Amy',
-        done: false
+        tea: 'task',
+        done: false,
+        status: 'todo',
+        category: 'inspiration'
+    },
+    {
+        title: 'A really big idea that wraps lines',
+        category: 'idea'
     }
     ]
 

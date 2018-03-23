@@ -14,7 +14,12 @@ export default class TodoList extends React.Component {
             <List containerStyle={styles.list}>
                 {
                     this.props.items.map((item, index) => (
-                        <ListItem key={index} title={item.title} status={item.status} onHandleUpdateStatus={(e) => this.handleUpdateStatus(index)}/>
+                        <ListItem key={index}
+                          title={item.title}
+                          tea={item.tea}
+                          status={item.status}
+                          category={item.category}
+                          onHandleUpdateStatus={(e) => this.handleUpdateStatus(index)}/>
                     ))
                 }
             </List>
@@ -24,7 +29,7 @@ export default class TodoList extends React.Component {
 
 const styles = StyleSheet.create({
     list: {
-        width: 350
+        width: 360
     }
 });
 
