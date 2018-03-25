@@ -57,15 +57,15 @@ export default class App extends React.Component {
 
         switch(list[index].status) {
             case 'todo':
-                newStatus = 'doing';
-                break;
-            case 'doing':
                 newStatus = 'completed';
                 break;
             case 'completed':
                 newStatus = 'migrated';
                 break;
             case 'migrated':
+                newStatus = 'cancelled';
+                break;
+            case 'cancelled':
                 newStatus = 'todo';
                 break;
             default:

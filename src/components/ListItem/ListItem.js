@@ -15,14 +15,14 @@ export default class ListItem extends React.Component {
         let teaIcon = this.props.tea ? this.props.tea + '-' +  this.props.status : null;
         return(
             <View style={styles.listItem}>
-                <TouchableOpacity onPress={this.handleUpdateStatus} style={styles.rightMargin}>
-                    <Icon name={teaIcon} style={this.props.status ==='completed' ? [styles.doneItemIcon, styles.itemIcon] : styles.itemIcon}/>
+                <TouchableOpacity onPress={this.handleUpdateStatus}>
+                    <Icon name={teaIcon} style={(this.props.status === 'completed' || this.props.status === 'cancelled') ? [styles.doneItemIcon, styles.itemIcon] : styles.itemIcon}/>
                 </TouchableOpacity>
                 <TouchableOpacity  style={styles.rightMargin}>
-                    <Icon name={this.props.category} style={this.props.status ==='completed' ? [styles.doneItemIcon, styles.itemIcon] : styles.itemIcon}/>
+                    <Icon name={this.props.category} style={(this.props.status === 'completed' || this.props.status === 'cancelled') ? [styles.doneItemIcon, styles.itemIcon] : styles.itemIcon}/>
                 </TouchableOpacity>
                 <View>
-                    <TodayText style={this.props.status ==='completed' ? [styles.doneItemTitle, styles.itemTitle] : styles.itemTitle}>{this.props.title}</TodayText>
+                    <TodayText style={(this.props.status === 'completed' || this.props.status === 'cancelled') ? [styles.doneItemTitle, styles.itemTitle] : styles.itemTitle}>{this.props.title}</TodayText>
                 </View>
             </View>
         )
@@ -36,21 +36,24 @@ const doneColor = '#aaa';
 const styles = StyleSheet.create({
     listItem: {
         flexDirection: 'row',
-        alignItems: 'flex-start'
-    },
-    rightMargin: {
-        marginRight:15
+        alignItems: 'flex-start',
+        marginBottom: 2
     },
     itemIcon: {
         fontSize:fontSize,
-        minWidth: fontSize,
-        marginTop: 15
+        width: 36,
+        marginRight: 5,
+        marginTop: 5,
+        marginBottom: 5
     },
     doneItemIcon: {
         color: doneColor
     },
     itemTitle: {
-        fontSize:fontSize
+        fontSize:fontSize,
+        flexWrap: 'wrap',
+        width: 278,
+        paddingRight:6
     },
     doneItemTitle: {
         color: doneColor,
