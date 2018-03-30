@@ -3,30 +3,20 @@ import {StyleSheet, View} from 'react-native';
 import {Icon} from 'react-native-elements';
 import TodoList from '../TodoList/TodoList';
 import TodayText from '../TodayText/TodayText';
-import {Font} from "expo";
 
 
 //TODO this is just temporary for development
 import listData from '../../assets/mockData.json';
 
 export default class HomeScreen extends React.Component {
+    static navigationOptions = {
+        headerStyle: {
+           display:'none'
+        }
+    };
 
     state = {
-        fontLoaded: false,
         list: listData.list
-    };
-    async componentDidMount() {
-        await Font.loadAsync({
-            'WaitingForTheSunrise': require('../../assets/fonts/WaitingForTheSunrise.ttf'),
-            'today': require('../../assets/fonts/today.ttf'),
-        });
-
-        this.setState({ fontLoaded: true });
-    }
-
-
-    handleAddItem = (item) => {
-        console.log(item)
     };
 
     handleUpdateStatus = (index) => {
@@ -57,20 +47,15 @@ export default class HomeScreen extends React.Component {
 
     render() {
         return (
-            <React.Fragment>
-                {this.state.fontLoaded ? (
-                <View style={styles.container}>
-                    <TodayText h2 style={{fontSize: 56}}>Today!</TodayText>
-                    <TodoList items={this.state.list} onUpdateStatus={this.handleUpdateStatus}/>
-                    <Icon
-                        name='add-circle'
-                        color='#f50'
-                        size={60}
-                        onPress={() => this.handleAddItem('TODO: pop a modal to capture new item.  also, style this button plz')}/>
-                </View>
-                ) : null
-                }
-            </React.Fragment>
+            <View style={styles.container}>
+                <TodayText h2 style={{fontSize: 56}}>Today!</TodayText>
+                <TodoList items={this.props.screenProps.list} onUpdateStatus={this.handleUpdateStatus}/>
+                <Icon
+                    name='add-circle'
+                    color='#f50'
+                    size={60}
+                    onPress={() => this.props.navigation.navigate('Add')}/>
+            </View>
         )
     }
 
@@ -82,6 +67,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'flex-start',
-        marginTop: 40,
+        marginTop: 0,
+        paddingTop: 40
     }
 });
