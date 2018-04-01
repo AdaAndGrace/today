@@ -21,8 +21,80 @@
       category: 'inspiration'
     },
     {
-      title: 'A really big idea that wraps lines',
+      title: 'A really big idea that wraps lines.',
       category: 'idea'
+    },
+    {
+      title: 'Take out the trash',
+      tea: 'task',
+      done: false,
+      status: 'completed'
+    },
+    {
+      title: 'March for Our Lives 2',
+      tea: 'event',
+      done: false,
+      status: 'todo',
+      category: 'important'
+    },
+    {
+      title: 'Call Amy 2',
+      tea: 'task',
+      done: false,
+      status: 'todo',
+      category: 'inspiration'
+    },
+    {
+      title: 'A really big idea that wraps lines 2.',
+      category: 'idea'
+    },
+    {
+      title: 'Take out the trash 2',
+      tea: 'task',
+      done: false,
+      status: 'completed'
+    },
+    {
+      title: 'March for Our Lives 3',
+      tea: 'event',
+      done: false,
+      status: 'todo',
+      category: 'important'
+    },
+    {
+      title: 'Call Amy 3',
+      tea: 'task',
+      done: false,
+      status: 'todo',
+      category: 'inspiration'
+    },
+    {
+      title: 'A really big idea that wraps lines 4.',
+      category: 'idea'
+    },
+    {
+      title: 'March for Our Lives 4',
+      tea: 'event',
+      done: false,
+      status: 'todo',
+      category: 'important'
+    },
+    {
+      title: 'Call Amy 4',
+      tea: 'task',
+      done: false,
+      status: 'todo',
+      category: 'inspiration'
+    },
+    {
+      title: 'A really big idea that wraps lines 4.',
+      category: 'idea'
+    },
+    {
+      title: 'Doctor appointment 4',
+      tea: 'appointment',
+      done: false,
+      status: 'todo'
     }
   ]
 }
