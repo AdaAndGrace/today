@@ -71,7 +71,7 @@ exports[`renders without crashing 1`] = `
               },
             ],
             Object {
-              "fontFamily": "today",
+              "fontFamily": "bullets",
               "fontStyle": "normal",
               "fontWeight": "normal",
             },
@@ -128,7 +128,7 @@ exports[`renders without crashing 1`] = `
               },
             ],
             Object {
-              "fontFamily": "today",
+              "fontFamily": "bullets",
               "fontStyle": "normal",
               "fontWeight": "normal",
             },
@@ -220,7 +220,7 @@ exports[`renders without crashing 1`] = `
               "minWidth": 26,
             },
             Object {
-              "fontFamily": "today",
+              "fontFamily": "bullets",
               "fontStyle": "normal",
               "fontWeight": "normal",
             },
@@ -272,7 +272,7 @@ exports[`renders without crashing 1`] = `
               "minWidth": 26,
             },
             Object {
-              "fontFamily": "today",
+              "fontFamily": "bullets",
               "fontStyle": "normal",
               "fontWeight": "normal",
             },
@@ -358,7 +358,7 @@ exports[`renders without crashing 1`] = `
               "minWidth": 26,
             },
             Object {
-              "fontFamily": "today",
+              "fontFamily": "bullets",
               "fontStyle": "normal",
               "fontWeight": "normal",
             },
@@ -410,7 +410,7 @@ exports[`renders without crashing 1`] = `
               "minWidth": 26,
             },
             Object {
-              "fontFamily": "today",
+              "fontFamily": "bullets",
               "fontStyle": "normal",
               "fontWeight": "normal",
             },
@@ -496,7 +496,7 @@ exports[`renders without crashing 1`] = `
               "minWidth": 26,
             },
             Object {
-              "fontFamily": "today",
+              "fontFamily": "bullets",
               "fontStyle": "normal",
               "fontWeight": "normal",
             },
@@ -548,7 +548,7 @@ exports[`renders without crashing 1`] = `
               "minWidth": 26,
             },
             Object {
-              "fontFamily": "today",
+              "fontFamily": "bullets",
               "fontStyle": "normal",
               "fontWeight": "normal",
             },

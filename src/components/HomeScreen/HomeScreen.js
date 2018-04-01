@@ -25,6 +25,9 @@ export default class HomeScreen extends React.Component {
 
         switch(list[index].status) {
             case 'todo':
+                newStatus = 'inprogress';
+                break;
+            case 'inprogress':
                 newStatus = 'completed';
                 break;
             case 'completed':
