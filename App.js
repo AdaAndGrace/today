@@ -32,7 +32,7 @@ export default class App extends React.Component {
     async componentDidMount() {
         await Font.loadAsync({
             'WaitingForTheSunrise': require('./src/assets/fonts/WaitingForTheSunrise.ttf'),
-            'today': require('./src/assets/fonts/today.ttf'),
+            'bullets': require('./src/assets/fonts/bullets.ttf'),
         });
 
         this.setState({ fontLoaded: true });
