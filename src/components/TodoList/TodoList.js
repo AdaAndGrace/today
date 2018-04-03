@@ -1,7 +1,8 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, FlatList, Text, Button} from 'react-native';
 import {List} from 'react-native-elements';
 import ListItem from '../ListItem/ListItem';
+import keyIndex from 'react-key-index';
 
 export default class TodoList extends React.Component {
 
@@ -10,19 +11,24 @@ export default class TodoList extends React.Component {
     };
 
     render() {
+      const output = keyIndex(this.props.items, 1);
         return (
-            <List containerStyle={styles.list}>
-                {
-                    this.props.items.map((item, index) => (
-                        <ListItem key={index}
-                          title={item.title}
-                          tea={item.tea}
-                          status={item.status}
-                          category={item.category}
-                          onHandleUpdateStatus={(e) => this.handleUpdateStatus(index)}/>
-                    ))
-                }
-            </List>
+            <View>
+                <FlatList
+                  containerStyle={styles.list}
+                  data={output}
+                  keyExtractor={(item, index) => index}
+                  renderItem={({ item, index }) =>
+                    <View>
+                      <ListItem
+                        title={item.title}
+                        tea={item.tea}
+                        status={item.status}
+                        category={item.category}
+                        onHandleUpdateStatus={(e) => this.handleUpdateStatus(index)}/>
+                    </View>}
+                />
+            </View>
         )
     }
 }
@@ -32,4 +38,3 @@ const styles = StyleSheet.create({
         width: 360
     }
 });
-
