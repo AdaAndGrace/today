@@ -1,37 +1,48 @@
 import React from 'react';
-import {StyleSheet, View, FlatList} from 'react-native';
-import {List} from 'react-native-elements';
+import {StyleSheet} from 'react-native';
+import {OptimizedFlatList} from 'react-native-optimized-flatlist'
 import ListItem from '../ListItem/ListItem';
-import keyIndex from 'react-key-index';
 
 export default class TodoList extends React.Component {
-    handleUpdateStatus = (index) => {
-        this.props.onUpdateStatus(index);
+    state = {
+        refresh: true
     };
+
+    handleUpdateStatus = (item) => {
+        this.props.onUpdateStatus(item.index);
+        this.setState(
+            {
+                refresh: !this.state.refresh
+            }
+        );
+    };
+
+    _renderItem = ({item, index}) => (
+        <ListItem
+            key={index}
+            title={item.title}
+            tea={item.tea}
+            status={item.status}
+            category={item.category}
+            onHandleUpdateStatus={(e) => this.handleUpdateStatus({index})}
+        />
+    );
+
     render() {
-      const output = keyIndex(this.props.items, 1);
         return (
-            <View>
-                <FlatList
-                    containerStyle={styles.list}
-                    data={output}
-                    keyExtractor={(item, index) => index}
-                    renderItem={({ item, index }) =>
-                        <ListItem
-                            title={item.title}
-                            tea={item.tea}
-                            status={item.status}
-                            category={item.category}
-                            onHandleUpdateStatus={(e) => this.handleUpdateStatus(index)}/>
-                    }
-                />
-            </View>
-        )
+            <OptimizedFlatList
+                data={this.props.items}
+                extraData={this.state.refresh}
+                keyExtractor={(item, index) => index}
+                renderItem={this._renderItem}
+                initialNumToRender={3}
+            />
+        );
     }
 }
 
 const styles = StyleSheet.create({
     list: {
-        width: 360
+        width: 360,
     }
 });

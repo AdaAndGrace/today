@@ -37,14 +37,13 @@ const styles = StyleSheet.create({
     listItem: {
         flexDirection: 'row',
         alignItems: 'flex-start',
-        marginBottom: 2
+        marginBottom: 3,
+        marginTop:1
     },
     itemIcon: {
         fontSize:fontSize,
         width: 36,
         marginRight: 5,
-        marginTop: 5,
-        marginBottom: 5
     },
     doneItemIcon: {
         color: doneColor
@@ -53,7 +52,8 @@ const styles = StyleSheet.create({
         fontSize:fontSize,
         flexWrap: 'wrap',
         width: 278,
-        paddingRight:6
+        paddingRight:6,
+        lineHeight: 30
     },
     doneItemTitle: {
         color: doneColor,

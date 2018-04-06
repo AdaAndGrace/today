@@ -31,12 +31,6 @@ export default class HomeScreen extends React.Component {
                 newStatus = 'completed';
                 break;
             case 'completed':
-                newStatus = 'migrated';
-                break;
-            case 'migrated':
-                newStatus = 'cancelled';
-                break;
-            case 'cancelled':
                 newStatus = 'todo';
                 break;
             default:
@@ -53,11 +47,14 @@ export default class HomeScreen extends React.Component {
             <View style={styles.container}>
                 <TodayText h2 style={{fontSize: 56}}>Today!</TodayText>
                 <TodoList items={this.props.screenProps.list} onUpdateStatus={this.handleUpdateStatus}/>
+                <View style={{zIndex: 100}}>
                 <Icon
                     name='add-circle'
                     color='#f50'
                     size={60}
-                    onPress={() => this.props.navigation.navigate('Add')}/>
+                    onPress={() => this.props.navigation.navigate('Add')}
+                />
+                </View>
             </View>
         )
     }
