@@ -31,12 +31,6 @@ export default class HomeScreen extends React.Component {
                 newStatus = 'completed';
                 break;
             case 'completed':
-                newStatus = 'migrated';
-                break;
-            case 'migrated':
-                newStatus = 'cancelled';
-                break;
-            case 'cancelled':
                 newStatus = 'todo';
                 break;
             default:
