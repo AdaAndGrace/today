@@ -1,59 +1,24 @@
 {
-  list: [
+  "list": [
     {
-      title: 'Take out the trash',
-      tea: 'task',
-      done: false,
-      status: 'completed'
+      "title": "Take out the trash",
+      "tea": "task",
+      "done": false,
+      "status": "completed"
     },
     {
-      title: 'March for Our Lives',
-      tea: 'event',
-      done: false,
-      status: 'todo',
-      category: 'important'
+      "title": "March for Our Lives",
+      "tea": "event",
+      "done": false,
+      "status": "todo",
+      "category": "important"
     },
     {
-      title: 'Call Amy',
-      tea: 'task',
-      done: false,
-      status: 'todo',
-      category: 'inspiration'
-    },
-    {
-      title: 'A really big idea that wraps lines.',
-      category: 'idea'
-    },
-    {
-      title: 'Take out the trash',
-      tea: 'task',
-      done: false,
-      status: 'completed'
-    },
-    {
-      title: 'March for Our Lives 2',
-      tea: 'event',
-      done: false,
-      status: 'todo',
-      category: 'important'
-    },
-    {
-      title: 'Call Amy 2',
-      tea: 'task',
-      done: false,
-      status: 'todo',
-      category: 'inspiration'
-    },
-    {
-      title: 'A really big idea that wraps lines 2.',
-      category: 'idea'
-    },
-    {
-      title: 'March for Our Lives',
-      tea: 'event',
-      done: false,
-      status: 'todo',
-      category: 'important'
+      "title": "Call Amy",
+      "tea": "task",
+      "done": false,
+      "status": "todo",
+      "category": "inspiration"
     }
   ]
 }

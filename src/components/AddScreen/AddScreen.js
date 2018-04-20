@@ -1,11 +1,61 @@
 import React from 'react';
-import {Form, StyleSheet, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, View, TouchableOpacity} from 'react-native';
 import {FormInput, ButtonGroup} from 'react-native-elements';
 import TodayText from '../TodayText/TodayText';
 import { createIconSetFromFontello } from '@expo/vector-icons';
 import fontelloConfig from '../../../config.json';
 const Icon = createIconSetFromFontello(fontelloConfig, 'bullets');
 
+const teaList = [
+    {
+        type: 'task',
+        displayName: 'Task',
+        icon: 'task-todo'
+    },
+    {
+        type: 'event',
+        displayName: 'Event',
+        icon: 'event-todo'
+    },
+    {
+        type: 'appointment',
+        displayName: 'Appt',
+        icon: 'appointment-todo'
+    }
+];
+
+const categoryList = [
+    {
+        type: 'expenses',
+        displayName: 'Expenses',
+        icon: 'expenses'
+    },
+    {
+        type: 'idea',
+        displayName: 'Idea',
+        icon: 'idea'
+    },
+    {
+        type: 'important',
+        displayName: 'Important',
+        icon: 'important'
+    },
+    {
+        type: 'inspiration',
+        displayName: 'Inspiration',
+        icon: 'inspiration'
+    },
+    {
+        type: 'note',
+        displayName: 'Note',
+        icon: 'note'
+    },
+    {
+        type: 'question',
+        displayName: 'Question',
+        icon: 'question'
+    },
+];
 
 export default class AddScreen extends React.Component {
 
@@ -13,12 +63,13 @@ export default class AddScreen extends React.Component {
         super(props);
         this.state = {
             teaSelectedIndex: -1,
+            teaSelectedType: '',
             categorySelectedIndex: -1,
+            categorySelectedType: '',
             title: ''
         }
-
-
     }
+
 
 //TODO document this better
     generateButtonList = (sourceList, iconOnly) => {
@@ -29,6 +80,18 @@ export default class AddScreen extends React.Component {
             buttonList.push({element: newButton});
         }
         return buttonList;
+    };
+
+    handleAddItem = () => {
+        let newItem = {
+            title: this.state.title,
+            tea: this.state.teaSelectedType,
+            category: this.state.categorySelectedType,
+            done: false,
+            status: "todo"
+        };
+        this.props.navigation.navigate('Home');
+        this.props.screenProps.addItem(newItem);
     };
 
 
@@ -45,7 +108,8 @@ export default class AddScreen extends React.Component {
             selectedTea = selectedIndex;
         }
         this.setState({
-            teaSelectedIndex: selectedTea
+            teaSelectedIndex: selectedTea,
+            teaSelectedType: teaList[selectedTea].type
         });
     };
 
@@ -59,62 +123,12 @@ export default class AddScreen extends React.Component {
             selectedCategory = selectedIndex;
         }
         this.setState({
-            categorySelectedIndex: selectedCategory
+            categorySelectedIndex: selectedCategory,
+            categorySelectedType: categoryList[selectedCategory].type
         })
     };
 
     render() {
-
-        const teaList = [
-            {
-                type: 'task',
-                displayName: 'Task',
-                icon: 'task-todo'
-            },
-            {
-                type: 'event',
-                displayName: 'Event',
-                icon: 'event-todo'
-            },
-            {
-                type: 'appointment',
-                displayName: 'Appt',
-                icon: 'appointment-todo'
-            }
-        ];
-
-        const categoryList = [
-            {
-                type: 'expenses',
-                displayName: 'Expenses',
-                icon: 'expenses'
-            },
-            {
-                type: 'idea',
-                displayName: 'Idea',
-                icon: 'idea'
-            },
-            {
-                type: 'important',
-                displayName: 'Important',
-                icon: 'important'
-            },
-            {
-                type: 'inspiration',
-                displayName: 'Inspiration',
-                icon: 'inspiration'
-            },
-            {
-                type: 'note',
-                displayName: 'Note',
-                icon: 'note'
-            },
-            {
-                type: 'question',
-                displayName: 'Question',
-                icon: 'question'
-            },
-        ];
 
 
         return (
@@ -126,6 +140,8 @@ export default class AddScreen extends React.Component {
                         placeholder="title"
                         inputStyle={styles.input}
                         maxLength={25}
+                        onChangeText={(text) => this.setState({title: text})}
+                        value={this.state.title}
                     />
 
                     <ButtonGroup
@@ -134,6 +150,7 @@ export default class AddScreen extends React.Component {
                         onPress={this.handleTeaSelection}
                         selectedButtonStyle={styles.selectedButton}
                         selectedTextStyle={styles.selectedButtonText}
+
                     />
 
                     <ButtonGroup
@@ -142,7 +159,7 @@ export default class AddScreen extends React.Component {
                         onPress={this.handleCategorySelection}
                         selectedButtonStyle={styles.selectedButton}
                     />
-                    <TouchableOpacity onPress={() => this.handleAdd}>
+                    <TouchableOpacity onPress={this.handleAddItem}>
                         <TodayText style={{fontSize: 24, color: '#137bee', textDecorationLine: 'underline'}}>Add Bullet</TodayText>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.props.navigation.goBack()}>

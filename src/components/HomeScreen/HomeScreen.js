@@ -4,10 +4,6 @@ import {Icon} from 'react-native-elements';
 import TodoList from '../TodoList/TodoList';
 import TodayText from '../TodayText/TodayText';
 
-
-//TODO this is just temporary for development
-import listData from '../../assets/mockData.json';
-
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
         headerStyle: {
@@ -15,12 +11,8 @@ export default class HomeScreen extends React.Component {
         }
     };
 
-    state = {
-        list: listData.list
-    };
-
     handleUpdateStatus = (index) => {
-        let list = this.state.list;
+        let list = this.props.screenProps.list;
         let newStatus;
 
         switch(list[index].status) {
