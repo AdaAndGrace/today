@@ -38,22 +38,27 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'flex-start',
         marginBottom: 3,
-        marginTop:1
+        marginTop:3
     },
     itemIcon: {
         fontSize:fontSize,
+        height: 42,
         width: 36,
+        paddingTop: 7,
         marginRight: 5,
+        alignItems: 'center'
     },
     doneItemIcon: {
-        color: doneColor
+        color: doneColor,
+        paddingRight: 6
     },
     itemTitle: {
         fontSize:fontSize,
         flexWrap: 'wrap',
         width: 278,
         paddingRight:6,
-        lineHeight: 30
+        lineHeight: 26,
+        paddingTop: 16
     },
     doneItemTitle: {
         color: doneColor,

@@ -1,0 +1,19 @@
+{
+  "list": [
+    {
+        type: 'task',
+        displayName: 'Task',
+        icon: 'task-todo'
+    },
+    {
+        type: 'event',
+        displayName: 'Event',
+        icon: 'event-todo'
+    },
+    {
+        type: 'appointment',
+        displayName: 'Appt',
+        icon: 'appointment-todo'
+    }
+  ]
+}

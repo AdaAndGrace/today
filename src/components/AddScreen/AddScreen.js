@@ -4,58 +4,9 @@ import {FormInput, ButtonGroup} from 'react-native-elements';
 import TodayText from '../TodayText/TodayText';
 import { createIconSetFromFontello } from '@expo/vector-icons';
 import fontelloConfig from '../../../config.json';
+import teaList from '../../../src/assets/teaData.json';
+import categoryList from '../../../src/assets/categoryData.json';
 const Icon = createIconSetFromFontello(fontelloConfig, 'bullets');
-
-const teaList = [
-    {
-        type: 'task',
-        displayName: 'Task',
-        icon: 'task-todo'
-    },
-    {
-        type: 'event',
-        displayName: 'Event',
-        icon: 'event-todo'
-    },
-    {
-        type: 'appointment',
-        displayName: 'Appt',
-        icon: 'appointment-todo'
-    }
-];
-
-const categoryList = [
-    {
-        type: 'expenses',
-        displayName: 'Expenses',
-        icon: 'expenses'
-    },
-    {
-        type: 'idea',
-        displayName: 'Idea',
-        icon: 'idea'
-    },
-    {
-        type: 'important',
-        displayName: 'Important',
-        icon: 'important'
-    },
-    {
-        type: 'inspiration',
-        displayName: 'Inspiration',
-        icon: 'inspiration'
-    },
-    {
-        type: 'note',
-        displayName: 'Note',
-        icon: 'note'
-    },
-    {
-        type: 'question',
-        displayName: 'Question',
-        icon: 'question'
-    },
-];
 
 export default class AddScreen extends React.Component {
 
@@ -109,7 +60,7 @@ export default class AddScreen extends React.Component {
         }
         this.setState({
             teaSelectedIndex: selectedTea,
-            teaSelectedType: teaList[selectedTea].type
+            teaSelectedType: teaList.list[selectedTea].type
         });
     };
 
@@ -124,7 +75,7 @@ export default class AddScreen extends React.Component {
         }
         this.setState({
             categorySelectedIndex: selectedCategory,
-            categorySelectedType: categoryList[selectedCategory].type
+            categorySelectedType: categoryList.list[selectedCategory].type
         })
     };
 
@@ -145,7 +96,7 @@ export default class AddScreen extends React.Component {
                     />
 
                     <ButtonGroup
-                        buttons={this.generateButtonList(teaList)}
+                        buttons={this.generateButtonList(teaList.list)}
                         selectedIndex={this.state.teaSelectedIndex}
                         onPress={this.handleTeaSelection}
                         selectedButtonStyle={styles.selectedButton}
@@ -154,7 +105,7 @@ export default class AddScreen extends React.Component {
                     />
 
                     <ButtonGroup
-                        buttons={this.generateButtonList(categoryList,true)}
+                        buttons={this.generateButtonList(categoryList.list,true)}
                         selectedIndex={this.state.categorySelectedIndex}
                         onPress={this.handleCategorySelection}
                         selectedButtonStyle={styles.selectedButton}
