@@ -7,6 +7,8 @@ import {Font} from "expo";
 import listData from './src/assets/mockData.json';
 
 
+
+
 // StackNavigator is a function that takes a route configuration object
 // and an options object and returns a React component
 const RootStack = StackNavigator(
@@ -27,7 +29,13 @@ const RootStack = StackNavigator(
 export default class App extends React.Component {
     state = {
         fontLoaded: false,
-        list: listData
+        list: listData.list
+    };
+
+    addItem = (newItem) => {
+        let updatedList = this.state.list;
+        updatedList.unshift(newItem);
+        this.setState({list: updatedList});
     };
     async componentDidMount() {
         await Font.loadAsync({
@@ -41,7 +49,8 @@ export default class App extends React.Component {
         return (
             <React.Fragment>
                 {this.state.fontLoaded ? (
-                    <RootStack screenProps={this.state.list}/>
+                    //this isn't optimal passing everything to all screens but we'll fix that when we add redux
+                    <RootStack screenProps={{list: this.state.list, addItem: this.addItem}}/>
                 ) : null
                 }
             </React.Fragment>
