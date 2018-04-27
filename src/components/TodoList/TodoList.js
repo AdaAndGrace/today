@@ -8,8 +8,8 @@ export default class TodoList extends React.Component {
         refresh: true
     };
 
-    handleUpdateStatus = (item) => {
-        this.props.onUpdateStatus(item.index);
+    handleUpdateStatus = (id) => {
+        this.props.onUpdateStatus(id);
         this.setState(
             {
                 refresh: !this.state.refresh
@@ -24,7 +24,8 @@ export default class TodoList extends React.Component {
             tea={item.tea}
             status={item.status}
             category={item.category}
-            onHandleUpdateStatus={(e) => this.handleUpdateStatus({index})}
+            id={item.id}
+            onHandleUpdateStatus={this.handleUpdateStatus}
         />
     );
 
@@ -40,9 +41,3 @@ export default class TodoList extends React.Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    list: {
-        width: 360,
-    }
-});
