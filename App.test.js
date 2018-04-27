@@ -1,10 +1,11 @@
 import React from 'react';
 import App from './App';
 
-import renderer from 'react-test-renderer';
+import TestRenderer from 'react-test-renderer';
 
 it('renders without crashing', () => {
-    const wrapper = renderer.create(<App/>).toJSON();
+    const wrapper = TestRenderer.create(<App/>).toJSON();
+    console.log(wrapper);
     expect(wrapper).toBeTruthy();
     expect(wrapper).toMatchSnapshot();
 });
