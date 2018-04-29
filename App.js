@@ -3,6 +3,7 @@ import HomeScreen from './src/components/HomeScreen/HomeScreen';
 import AddScreen from './src/components/AddScreen/AddScreen';
 import {StackNavigator} from 'react-navigation';
 import {Font} from "expo";
+import {StyleSheet, View} from 'react-native';
 
 import listData from './src/assets/mockData.json';
 
@@ -77,14 +78,20 @@ export default class App extends React.Component {
     }
     render() {
         return (
-            <React.Fragment>
+            <View style={styles.container}>
                 {this.state.fontLoaded ? (
                     //this isn't optimal passing everything to all screens but we'll fix that when we add redux
                     <RootStack screenProps={{list: this.state.list, addItem: this.addItem, handleUpdateStatus: this.updateStatus}}/>
                 ) : null
                 }
-            </React.Fragment>
+            </View>
 
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1
+    }
+});
