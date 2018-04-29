@@ -34,12 +34,14 @@ export default class AddScreen extends React.Component {
     };
 
     handleAddItem = () => {
+        let date = new Date();
         let newItem = {
             title: this.state.title,
             tea: this.state.teaSelectedType,
             category: this.state.categorySelectedType,
             done: false,
-            status: "todo"
+            status: "todo",
+            date: date
         };
         this.props.navigation.navigate('Home');
         this.props.screenProps.addItem(newItem);

@@ -18,9 +18,9 @@ export default class ListItem extends React.Component {
                 <TouchableOpacity onPress={this.handleUpdateStatus}>
                     <Icon name={teaIcon} style={(this.props.status === 'completed' || this.props.status === 'cancelled' || this.props.status === 'migrated') ? [styles.doneItemIcon, styles.itemIcon] : styles.itemIcon}/>
                 </TouchableOpacity>
-                <TouchableOpacity  style={styles.rightMargin}>
+                <View>
                     <Icon name={this.props.category} style={(this.props.status === 'completed' || this.props.status === 'cancelled' || this.props.status === 'migrated') ? [styles.doneItemIcon, styles.itemIcon] : styles.itemIcon}/>
-                </TouchableOpacity>
+                </View>
                 <View>
                     <TodayText style={(this.props.status === 'completed' || this.props.status === 'cancelled' || this.props.status === 'migrated') ? [styles.doneItemTitle, styles.itemTitle] : styles.itemTitle}>{this.props.title}</TodayText>
                 </View>
@@ -38,7 +38,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'flex-start',
         marginBottom: 3,
-        marginTop:3
+        marginTop:3,
+        marginLeft:10
     },
     itemIcon: {
         fontSize:fontSize,
