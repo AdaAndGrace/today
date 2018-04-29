@@ -8,7 +8,7 @@ const Icon = createIconSetFromFontello(fontelloConfig, 'bullets');
 export default class ListItem extends React.Component {
 
     handleUpdateStatus = () => {
-        this.props.onHandleUpdateStatus()
+        this.props.onHandleUpdateStatus(this.props.id);
     };
 
     render() {

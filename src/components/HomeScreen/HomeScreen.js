@@ -11,27 +11,8 @@ export default class HomeScreen extends React.Component {
         }
     };
 
-    handleUpdateStatus = (index) => {
-        let list = this.props.screenProps.list;
-        let newStatus;
-
-        switch(list[index].status) {
-            case 'todo':
-                newStatus = 'inprogress';
-                break;
-            case 'inprogress':
-                newStatus = 'completed';
-                break;
-            case 'completed':
-                newStatus = 'todo';
-                break;
-            default:
-                newStatus = 'todo';
-        }
-        list[index].status = newStatus;
-        this.setState({
-            list: list
-        })
+    handleUpdateStatus  = (id) => {
+        this.props.screenProps.handleUpdateStatus(id);
     };
 
     render() {

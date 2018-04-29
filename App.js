@@ -6,9 +6,6 @@ import {Font} from "expo";
 
 import listData from './src/assets/mockData.json';
 
-
-
-
 // StackNavigator is a function that takes a route configuration object
 // and an options object and returns a React component
 const RootStack = StackNavigator(
@@ -29,14 +26,47 @@ const RootStack = StackNavigator(
 export default class App extends React.Component {
     state = {
         fontLoaded: false,
-        list: listData.list
+        list: listData.list,
+        bulletCount: listData.list.length
     };
 
     addItem = (newItem) => {
         let updatedList = this.state.list;
+        let bulletCount = this.state.bulletCount + 1;
+
+        newItem.id = bulletCount;
+
         updatedList.unshift(newItem);
-        this.setState({list: updatedList});
+        this.setState({
+            list: updatedList,
+            bulletCount: bulletCount
+        });
     };
+
+    updateStatus = (id) => {
+        let list = this.state.list;
+        itemToUpdate = list.findIndex(bullet => bullet.id === id);
+        let newStatus;
+
+        switch(list[itemToUpdate].status) {
+            case 'todo':
+                newStatus = 'inprogress';
+                break;
+            case 'inprogress':
+                newStatus = 'completed';
+                break;
+            case 'completed':
+                newStatus = 'todo';
+                break;
+            default:
+                newStatus = 'todo';
+        }
+        list[itemToUpdate].status = newStatus;
+        this.setState({
+            list: list
+        })
+    };
+
     async componentDidMount() {
         await Font.loadAsync({
             'WaitingForTheSunrise': require('./src/assets/fonts/WaitingForTheSunrise.ttf'),
@@ -50,7 +80,7 @@ export default class App extends React.Component {
             <React.Fragment>
                 {this.state.fontLoaded ? (
                     //this isn't optimal passing everything to all screens but we'll fix that when we add redux
-                    <RootStack screenProps={{list: this.state.list, addItem: this.addItem}}/>
+                    <RootStack screenProps={{list: this.state.list, addItem: this.addItem, handleUpdateStatus: this.updateStatus}}/>
                 ) : null
                 }
             </React.Fragment>
