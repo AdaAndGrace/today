@@ -5,7 +5,8 @@
       "title": "Take out the trash",
       "tea": "task",
       "done": false,
-      "status": "completed"
+      "status": "completed",
+      "date": "2018-04-30T01:49:19.630Z"
     },
     {
       "id": 2,
@@ -13,7 +14,8 @@
       "tea": "event",
       "done": false,
       "status": "todo",
-      "category": "important"
+      "category": "important",
+      "date": "2018-04-30T04:29:59.630Z"
     },
     {
       "id":1,
@@ -21,7 +23,8 @@
       "tea": "task",
       "done": false,
       "status": "todo",
-      "category": "inspiration"
+      "category": "inspiration",
+      "date": "2018-04-29T02:19:19.630Z"
     }
   ]
 }
