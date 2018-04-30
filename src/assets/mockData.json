@@ -1,4 +1,30 @@
 {
   "list": [
+    {
+      "id": 3,
+      "title": "Take out the trash",
+      "tea": "task",
+      "done": false,
+      "status": "completed",
+      "date": "2018-04-30T01:49:19.630Z"
+    },
+    {
+      "id": 2,
+      "title": "March for Our Lives",
+      "tea": "event",
+      "done": false,
+      "status": "todo",
+      "category": "important",
+      "date": "2018-04-30T04:29:59.630Z"
+    },
+    {
+      "id":1,
+      "title": "Call Amy",
+      "tea": "task",
+      "done": false,
+      "status": "todo",
+      "category": "inspiration",
+      "date": "2018-04-29T02:19:19.630Z"
+    }
   ]
 }
