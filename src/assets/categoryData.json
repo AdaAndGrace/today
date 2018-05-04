@@ -1,34 +1,34 @@
 {
   "list": [
     {
-        type: 'expenses',
-        displayName: 'Expenses',
-        icon: 'expenses'
+        "type": "expenses",
+        "displayName": "Expenses",
+        "icon": "expenses"
     },
     {
-        type: 'idea',
-        displayName: 'Idea',
-        icon: 'idea'
+        "type": "idea",
+        "displayName": "Idea",
+        "icon": "idea"
     },
     {
-        type: 'important',
-        displayName: 'Important',
-        icon: 'important'
+        "type": "important",
+        "displayName": "Important",
+        "icon": "important"
     },
     {
-        type: 'inspiration',
-        displayName: 'Inspiration',
-        icon: 'inspiration'
+        "type": "inspiration",
+        "displayName": "Inspiration",
+        "icon": "inspiration"
     },
     {
-        type: 'note',
-        displayName: 'Note',
-        icon: 'note'
+        "type": "note",
+        "displayName": "Note",
+        "icon": "note"
     },
     {
-        type: 'question',
-        displayName: 'Question',
-        icon: 'question'
+        "type": "question",
+        "displayName": "Question",
+        "icon": "question"
     }
   ]
 }
