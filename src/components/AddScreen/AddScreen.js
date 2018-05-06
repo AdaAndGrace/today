@@ -144,13 +144,14 @@ export default class AddScreen extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#ccc',
-        padding:20
+        backgroundColor: '#fff',
+        marginTop: 0,
+        padding: 20,
+        paddingTop: 40
     },
     input: {
         fontSize:34,
-        fontFamily:'WaitingForTheSunrise',
-        backgroundColor: 'pink'
+        fontFamily:'WaitingForTheSunrise'
     },
     icon: {
         fontSize:20
