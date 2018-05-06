@@ -96,7 +96,7 @@ export default class AddScreen extends React.Component {
         return (
             <React.Fragment>
                 <ScrollView style={styles.container}>
-                    <TodayText style={{fontSize: 24}}>Add a new bullet:</TodayText>
+                    <TodayText h2 style={styles.titleText}>Add a new bullet:</TodayText>
                     <FormInput
                         placeholder="title"
                         value={this.state.title}
@@ -168,7 +168,6 @@ const styles = StyleSheet.create({
       textDecorationLine: 'underline'
     },
     titleText: {
-      fontSize: 44,
-      marginTop: 30
+      fontSize: 44
     }
 });
