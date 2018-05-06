@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, View, TouchableOpacity, ScrollView} from 'react-native';
-import {FormInput, ButtonGroup} from 'react-native-elements';
+import {FormInput, FormValidationMessage, ButtonGroup} from 'react-native-elements';
 import TodayText from '../TodayText/TodayText';
 import { createIconSetFromFontello } from '@expo/vector-icons';
 import fontelloConfig from '../../../config.json';
@@ -17,7 +17,8 @@ export default class AddScreen extends React.Component {
             teaSelectedType: '',
             categorySelectedIndex: -1,
             categorySelectedType: '',
-            title: ''
+            title: '',
+            titleError: false
         }
     }
 
@@ -34,18 +35,26 @@ export default class AddScreen extends React.Component {
     };
 
     handleAddItem = () => {
-        let date = new Date();
-        let newItem = {
-            title: this.state.title,
-            tea: this.state.teaSelectedType,
-            category: this.state.categorySelectedType,
-            done: false,
-            status: "todo",
-            creationDate: date
-        };
-        this.props.navigation.navigate('Home');
-        this.props.screenProps.addItem(newItem);
+        if(!this.state.title) {
+            this.setState({
+                titleError: 'Please enter a title'
+            });
+        } else {
+            let date = new Date();
+            let newItem = {
+                title: this.state.title,
+                tea: this.state.teaSelectedType,
+                category: this.state.categorySelectedType,
+                done: false,
+                status: "todo",
+                creationDate: date
+            };
+            this.props.navigation.navigate('Home');
+            this.props.screenProps.addItem(newItem);
+        }
     };
+
+
 
 
     //todo these two functions could probably be refined and put into one thing
@@ -87,15 +96,22 @@ export default class AddScreen extends React.Component {
         return (
             <React.Fragment>
                 <ScrollView style={styles.container}>
-                    <TodayText style={styles.titleText}>Add a new bullet:</TodayText>
-
+                    <TodayText style={{fontSize: 24}}>Add a new bullet:</TodayText>
                     <FormInput
                         placeholder="title"
+                        value={this.state.title}
                         inputStyle={styles.input}
                         maxLength={25}
                         onChangeText={(text) => this.setState({title: text})}
-                        value={this.state.title}
+                        onFocus={() => this.setState({titleError: null})}
                     />
+                    <FormValidationMessage>
+                        {this.state.titleError &&
+                            <TodayText style={{fontSize: 24}}>{this.state.titleError}</TodayText>
+                        }
+                    </FormValidationMessage>
+
+
 
                     <ButtonGroup
                         buttons={this.generateButtonList(teaList.list)}
