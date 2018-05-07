@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, View, TouchableOpacity, ScrollView} from 'react-native';
 import {FormInput, FormValidationMessage, ButtonGroup} from 'react-native-elements';
 import TodayText from '../TodayText/TodayText';
 import { createIconSetFromFontello } from '@expo/vector-icons';
@@ -47,12 +47,11 @@ export default class AddScreen extends React.Component {
                 category: this.state.categorySelectedType,
                 done: false,
                 status: "todo",
-                date: date
+                creationDate: date
             };
             this.props.navigation.navigate('Home');
             this.props.screenProps.addItem(newItem);
         }
-
     };
 
 
@@ -96,9 +95,8 @@ export default class AddScreen extends React.Component {
 
         return (
             <React.Fragment>
-                <View style={styles.container}>
-                    <TodayText style={{fontSize: 24}}>Add a new bullet:</TodayText>
-
+                <ScrollView style={styles.container}>
+                    <TodayText h2 style={styles.titleText}>Add a new bullet:</TodayText>
                     <FormInput
                         placeholder="title"
                         value={this.state.title}
@@ -131,12 +129,12 @@ export default class AddScreen extends React.Component {
                         selectedButtonStyle={styles.selectedButton}
                     />
                     <TouchableOpacity onPress={this.handleAddItem}>
-                        <TodayText style={{fontSize: 24, color: '#137bee', textDecorationLine: 'underline'}}>Add Bullet</TodayText>
+                        <TodayText style={styles.links}>Add Bullet</TodayText>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
-                        <TodayText style={{fontSize: 24, color: '#137bee', textDecorationLine: 'underline'}}>Cancel</TodayText>
+                        <TodayText style={styles.links}>Cancel</TodayText>
                     </TouchableOpacity>
-                </View>
+                </ScrollView>
             </React.Fragment>
         )
     }
@@ -147,13 +145,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
         marginTop: 0,
+        padding: 20,
         paddingTop: 40
     },
     input: {
-        fontSize:24,
+        fontSize:34,
         fontFamily:'WaitingForTheSunrise'
     },
     icon: {
@@ -164,5 +161,13 @@ const styles = StyleSheet.create({
     },
     selectedButtonText: { //todo this doesn't work. we need to update our elements manually for selected button styling
         color:'white'
+    },
+    links: {
+      fontSize: 24,
+      color: '#137bee',
+      textDecorationLine: 'underline'
+    },
+    titleText: {
+      fontSize: 44
     }
 });
