@@ -55,44 +55,23 @@ export default class AddScreen extends React.Component {
     };
 
 
+    handleButtonGroupSelection = (buttonGroup, list, selectedIndex) => {
+        //make a copy of state so we're not mutating it directly
+        let newState = Object.assign({}, this.state);
 
-
-    //todo these two functions could probably be refined and put into one thing
-    //duplicating too much here
-
-    handleTeaSelection = (selectedIndex) => {
-        let selectedTea;
         //we don't require tea, so if the user pushes a tea button that is already selected
         //let's deselect it.
-        if(selectedIndex === this.state.teaSelectedIndex) {
-            selectedTea = -1;
+        if(selectedIndex === this.state[buttonGroup + 'SelectedIndex']) {
+            newState[buttonGroup + 'SelectedIndex'] = -1;
         } else {
-            selectedTea = selectedIndex;
+            newState[buttonGroup + 'SelectedIndex'] = selectedIndex;
+            newState[buttonGroup + 'SelectedType'] = list[selectedIndex].type;
         }
-        this.setState({
-            teaSelectedIndex: selectedTea,
-            teaSelectedType: teaList.list[selectedTea].type
-        });
-    };
 
-    handleCategorySelection = (selectedIndex) => {
-        let selectedCategory;
-        //we don't require category, so if the user pushes a tea button that is already selected
-        //let's deselect it.
-        if(selectedIndex === this.state.categorySelectedIndex) {
-            selectedCategory = -1;
-        } else {
-            selectedCategory = selectedIndex;
-        }
-        this.setState({
-            categorySelectedIndex: selectedCategory,
-            categorySelectedType: categoryList.list[selectedCategory].type
-        })
+        this.setState(newState);
     };
 
     render() {
-
-
         return (
             <React.Fragment>
                 <ScrollView style={styles.container}>
@@ -116,16 +95,15 @@ export default class AddScreen extends React.Component {
                     <ButtonGroup
                         buttons={this.generateButtonList(teaList.list)}
                         selectedIndex={this.state.teaSelectedIndex}
-                        onPress={this.handleTeaSelection}
+                        onPress={(event) => this.handleButtonGroupSelection("tea", teaList.list, event)}
                         selectedButtonStyle={styles.selectedButton}
-                        selectedTextStyle={styles.selectedButtonText}
 
                     />
 
                     <ButtonGroup
                         buttons={this.generateButtonList(categoryList.list,true)}
                         selectedIndex={this.state.categorySelectedIndex}
-                        onPress={this.handleCategorySelection}
+                        onPress={(event) => this.handleButtonGroupSelection("category", categoryList.list, event)}
                         selectedButtonStyle={styles.selectedButton}
                     />
                     <TouchableOpacity onPress={this.handleAddItem}>
